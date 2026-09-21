@@ -9,6 +9,6 @@ const adapter = new PrismaPg({
 
 const prisma = new PrismaClient({
   adapter,
-});
+}); 
 
 module.exports = prisma;        

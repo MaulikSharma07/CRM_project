@@ -1,9 +1,20 @@
 const express = require("express");
+const authenticate = require("./src/middleware/auth");
 const prisma = require("./src/lib/prisma");
+const authRoutes = require("./src/routes/auth");
 
 const app = express();
 
 app.use(express.json());
+
+app.use("/auth", authRoutes);
+
+app.get("/profile", authenticate, (req, res) => {
+  res.json({
+    message: "Authenticated successfully",
+    user: req.user,
+  });
+});
 
 app.get("/", (req, res) => {
   res.json({ message: "CRM Backend is running" });
