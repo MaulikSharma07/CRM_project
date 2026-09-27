@@ -1,4 +1,4 @@
-const prisma = require("../lib/prisma");
+const prisma = require("../src/lib/prisma");
 
 async function withTenant(tenantId, callback) {
   return prisma.$transaction(async (tx) => {

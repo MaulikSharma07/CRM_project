@@ -2,12 +2,16 @@ const express = require("express");
 const authenticate = require("./src/middleware/auth");
 const prisma = require("./src/lib/prisma");
 const authRoutes = require("./src/routes/auth");
+const customerRoutes = require("./src/routes/customer");
 
 const app = express();
 
 app.use(express.json());
 
 app.use("/auth", authRoutes);
+
+app.use("/customers", customerRoutes);
+
 
 app.get("/profile", authenticate, (req, res) => {
   res.json({
